@@ -1,0 +1,71 @@
+.drop-area {
+    width: 100%;
+    border: 2px dashed #CBD5E0; /* Equivalent to border-tertiary/50 */
+    border-radius: 0.75rem; /* Equivalent to rounded-xl */
+    background-color: #F1F5F9; /* Equivalent to bg-slate-100 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Equivalent to shadow */
+    margin-top: 2.5rem; /* Equivalent to mt-10 */
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.drop-area.dragging {
+    border-color: #3B82F6; /* Equivalent to border-blue-500 */
+    background-color: #E0F2FE; /* Equivalent to bg-sky-100 */
+}
+
+.drop-area-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-height: 200px;
+    width: 100%;
+    font-size: 1.25rem; /* Equivalent to text-xl */
+    font-weight: bold;
+    color: #CBD5E0; /* Equivalent to text-tertiary/50 */
+    user-select: none;
+}
+
+.image-preview-wrapper {
+    margin: 0 0.5rem;
+    border-top: 1px solid #E5E7EB; /* Equivalent to border-t */
+}
+
+.image-preview-container {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.image-preview {
+    object-fit: cover;
+    width: 3.5rem; /* Equivalent to w-14 */
+    height: 3.5rem; /* Equivalent to h-14 */
+}
+
+.remove-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem; /* Equivalent to w-4 */
+    height: 1rem; /* Equivalent to h-4 */
+    font-size: 0.75rem; /* Equivalent to text-xs */
+    color: #EF4444; /* Equivalent to text-red-500 */
+    background-color: white;
+    border: 1px solid #E5E7EB; /* Equivalent to border */
+    border-radius: 9999px; /* Equivalent to rounded-full */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow */
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.remove-button:hover {
+    color: #B91C1C; /* Equivalent to text-red-700 */
+}
