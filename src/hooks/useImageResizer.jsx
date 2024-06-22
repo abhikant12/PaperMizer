@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { positionImages } from "../pages/home/components/resizingWindow/utils";
+import { positionImages } from "../components/resizingWindow/utils";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 const useResizeImage = ({ containerRef, images, setImages }) => {

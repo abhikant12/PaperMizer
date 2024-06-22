@@ -1,0 +1,39 @@
+/* ResizeAnchor.css */
+.resize-handle {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    cursor: se-resize;
+    border: 1px solid blue;
+}
+
+@media (min-width: 768px) {
+    .resize-handle {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.resize-icon {
+    position: absolute;
+    width: 16px;
+}
+
+@media (min-width: 768px) {
+    .resize-icon {
+        width: 10px;
+    }
+}
+
+.resize-icon-1 {
+    top: -1px;
+    left: -1px;
+    transform: rotate(135deg);
+}
+
+.resize-icon-2 {
+    right: -2px;
+    bottom: -2px;
+    transform: rotate(-45deg);
+}
