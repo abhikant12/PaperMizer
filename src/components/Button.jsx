@@ -10,7 +10,7 @@ function Button({
     type = "button",
 }) {
     const classNameText = twMerge(
-        "custom-button",
+        " px-2 py-2 bg-blue-500 hover:bg-blue-700 text-white select-none rounded gap-1 flex items-center justify-center",
         className
     );
 

@@ -45,6 +45,18 @@ const MarginHandles = ({ handleMarginDragStart }) => {
                 <MarginHandleIcon className="margin-handle-icon" />
             </div>
 
+            {/* bottom margin handle */}
+            <div
+                className="margin-handle margin-handle-bottom"
+                style={{
+                    bottom: container.margin.bottom * container.scaleFactor,
+                }}
+                onMouseDown={(e) => handleMarginDragStart(e, "bottom")}
+                onTouchStart={(e) => handleMarginDragStart(e, "bottom")}
+            >
+                <MarginHandleIcon className="margin-handle-icon" />
+            </div>
+
             {/* margin lines */}
             <div
                 className="margin-line-top"
@@ -64,8 +76,15 @@ const MarginHandles = ({ handleMarginDragStart }) => {
                     width: container.margin.right * container.scaleFactor,
                 }}
             ></div>
+            <div
+                className="margin-line-bottom"
+                style={{
+                    height: container.margin.bottom * container.scaleFactor,
+                }}
+            ></div>
         </>
     );
 };
+
 
 export default MarginHandles;

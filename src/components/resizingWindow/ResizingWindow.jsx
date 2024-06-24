@@ -14,7 +14,6 @@ import LabelSelectInput from "../../components/LabelSelect";
 import { paperSizes } from "../../data/paperSizes";
 import ResizeAnchor from "./components/ResizeAnchor";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
-import './ResizingWindow.css';
 
 
 
@@ -26,10 +25,6 @@ const ResizingWindow = ({ images, setImages }) => {
         (state) => state.main
     );
 
-    // Function to toggle the margin controls
-    const toggleMarginControls = () => {
-        setShowMarginControls(!showMarginControls);
-    };
 
     const {
         localImages,
@@ -73,20 +68,15 @@ const ResizingWindow = ({ images, setImages }) => {
     });
 
     return (
-        <div className="resizing-window-container">
-            <div className="resizing-window-info">
-                <p>
+        <div className="flex flex-col items-center justify-center w-full pt-5 mx-auto border-t">
+            <div className="mb-4">
+                <p className="text-sm text-center text-gray-600">
                     Click on the image and use the resize handle to resize the
                     images. Take reference from the A4 paper width below and
                     decide what size you want each image to be.
                 </p>
             </div>
-            <div className="resizing-window-controls">
-                <button
-                    onClick={toggleMarginControls}
-                >
-                    {showMarginControls ? "Hide Margins" : "Show Margins"}
-                </button>
+            <div className="flex flex-col items-center justify-center gap-5 mb-4 sm:flex-row">
                 <LabelInput
                     type="number"
                     label="Padding"
@@ -104,22 +94,6 @@ const ResizingWindow = ({ images, setImages }) => {
                         );
                     }}
                 />
-                <LabelInput
-                    type="number"
-                    label="Set initial max width %"
-                    labelClassName="min-w-[150px]"
-                    wrapperClassName="max-w-[250px]"
-                    min={10}
-                    max={100}
-                    value={startingMaxWidthFactor * 100}
-                    onChange={(e) => {
-                        let value = parseInt(e.target.value, 10);
-                        if (isNaN(value)) value = 0;
-
-                        dispatch(setStartingMaxWidthFactor(value / 100));
-                    }}
-                />
-
                 <LabelSelectInput
                     label="Paper"
                     options={Object.values(paperSizes).map(({ name }) => ({
@@ -129,8 +103,7 @@ const ResizingWindow = ({ images, setImages }) => {
                     value={container.paperSize.name}
                     onChange={(e) => {
                         const selectedPaperSizeName = e.target.value;
-                        const selectedPaperSize =
-                            paperSizes[selectedPaperSizeName];
+                        const selectedPaperSize = paperSizes[selectedPaperSizeName];
 
                         if (selectedPaperSize) {
                             const newContainer = {
@@ -144,8 +117,6 @@ const ResizingWindow = ({ images, setImages }) => {
                         }
                     }}
                 />
-
-                {/* show border checkBox */}
                 <div className="flex flex-row items-center gap-x-2">
                     <input
                         type="checkbox"
@@ -157,20 +128,11 @@ const ResizingWindow = ({ images, setImages }) => {
                     <p className="text-sm">Add Border</p>
                 </div>
             </div>
-            {showMarginControls && (
-                <div className="resizing-window-margin-controls">
-                    {/* margin controls */}
-                    <div className="resizing-window-margin-info">
-                        <InformationCircleIcon className="resizing-window-margin-info-icon" />
-                        <p>
-                            Most browser's print feature also allows you to set
-                            custom margins. You can leave the margins at 0 if
-                            you want.
-                        </p>
-                    </div>
-
-                    <div>Margin: </div>
-                    <div className="resizing-window-margin-labels">
+          
+            {(
+                <div className="flex flex-col items-center justify-center w-full mb-10  gap-y-2 max-w-[450px]">
+                    <div className="mr-1">Margin: </div>
+                    <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-4">
                         <LabelInput
                             type="number"
                             label="top"
@@ -189,7 +151,6 @@ const ResizingWindow = ({ images, setImages }) => {
                             value={container.margin.right}
                             onChange={(e) => handleMarginChange(e, "right")}
                         />
-
                         <LabelInput
                             type="number"
                             label="bottom"
@@ -199,43 +160,45 @@ const ResizingWindow = ({ images, setImages }) => {
                     </div>
                 </div>
             )}
+         
             <div
                 ref={containerRef}
                 style={{
                     width: container.w * container.scaleFactor,
                     height: (maxY + 5) * container.scaleFactor,
+                    border: "1px solid black",
+                    position: "relative",
                 }}
-                className="resizing-window-image-container"
+                className="mt-10 bg-white"
             >
-                <div className="resizing-window-paper-size">
-                    <div className="resizing-window-paper-size-line"></div>
-                    <div className="resizing-window-paper-size-text">
+                <div className="absolute flex flex-row items-center w-full h-10 -top-12">
+                    <div className="w-full h-[1px] bg-gray-500 relative">
+                        <div className="w-[10px] h-[1px] rotate-90 bg-gray-500 absolute -left-[6px]"></div>
+                    </div>
+                    <div className="px-2 text-sm text-center whitespace-nowrap">
                         {container.paperSize.name} Paper Width
                     </div>
-                    <div className="resizing-window-paper-size-line"></div>
+                    <div className="w-full h-[1px] bg-gray-500 relative">
+                        <div className="w-[10px] h-[1px] rotate-90 bg-gray-500 absolute -right-[6px]"></div>
+                    </div>
                 </div>
-
-                {showMarginControls && (
-                    <MarginHandles
-                        handleMarginDragStart={handleMarginDragStart}
-                    />
+                {(
+                    <MarginHandles handleMarginDragStart={handleMarginDragStart} />
                 )}
-
                 {maxY > container.h * container.scaleFactor && (
                     <div
-                        className="resizing-window-page-end"
+                        className="absolute w-full bg-gray-300"
                         style={{
                             top: container.h * container.scaleFactor,
                             height: 1,
                         }}
                     >
-                        <p className="resizing-window-page-end-text">
+                        <p className="absolute text-[8px] opacity-50 -top-3 right-1">
                             Page End
                         </p>
                     </div>
                 )}
-
-                {localImages.map((imgData, index) => {
+                {localImages.map((imgData) => {
                     const imageUrl = imageUrls.get(imgData.id) || "";
 
                     return (
@@ -243,19 +206,20 @@ const ResizingWindow = ({ images, setImages }) => {
                             key={imgData.id}
                             data-id={imgData.id}
                             style={{
+                                position: "absolute",
                                 left: imgData.x * container.scaleFactor,
                                 top: imgData.y * container.scaleFactor,
                                 width: imgData.w * container.scaleFactor,
                                 height: imgData.h * container.scaleFactor,
                                 backgroundImage: `url(${imageUrl})`,
+                                backgroundSize: "cover",
+                                border:
+                                    selectedId === imgData.id
+                                        ? "2px solid blue"
+                                        : showBorder
+                                        ? "1px solid black"
+                                        : "none",
                             }}
-                            className={`resizing-window-image ${
-                                selectedId === imgData.id
-                                    ? "resizing-window-image-selected"
-                                    : showBorder
-                                    ? "resizing-window-image-border"
-                                    : ""
-                            }`}
                             onMouseDown={(e) => handleMouseDown(e, imgData)}
                             onTouchStart={(e) => handleMouseDown(e, imgData)}
                         >

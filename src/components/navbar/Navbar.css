@@ -12,12 +12,13 @@
   font-weight: bold;
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .navbar-links {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 1.5rem;  
 }
 
 .navbar-links li {
@@ -27,7 +28,8 @@
 .navbar-links a {
   color: #fff;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.4rem;
+  font-weight: 400;
   transition: color 0.3s;
 }
 
@@ -35,9 +37,10 @@
   color: #ff0080;
 }
 
+
 .navbar-icons {
   display: flex;
-  gap: 1rem;
+  gap: 1.3rem;
 }
 
 .navbar-icons a {
@@ -48,4 +51,27 @@
 
 .navbar-icons a:hover {
   color: #ff0080;
+}
+
+.fade-out {
+  animation: disappear 200ms forwards;
+}
+
+.fade-in {
+  animation: appear 200ms forwards;
+}
+
+@keyframes disappear {
+  to {
+      opacity: 0;
+  }
+}
+
+@keyframes appear {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }

@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import './About.css';
 
 const About = () => {
+
+    const [text, setText] = useState('');
+    const [index, setIndex] = useState(0);
+    const heading = 'About PaperMizer';
+
+    useEffect(() => {
+        if(index < heading.length) {
+            const timeout = setTimeout(() => {
+                setText((prev) => prev + heading[index]);
+                setIndex((prev) => prev + 1);
+            }, 200);  
+            return () => clearTimeout(timeout);
+        }
+    }, [index, heading]);
+
+
     return (
         <div className="main-container">
             <div className="container">
-                <h1 className="main-heading">About PaperMizer</h1>
+                <h1 className="main-heading">{text}</h1>
                 <p className="main-paragraph">
                     Welcome to PaperMizer – your go-to solution for efficient image
                     packing onto paper! We understand the importance of optimizing
@@ -19,7 +35,6 @@ const About = () => {
                     How to Use PaperMizer:
                 </h2>
                 <ol className="list-decimal">
-                  
                     <li className="list-decimal-item">
                         <strong>Uploading Images:</strong>
                         <ul className="list-disc">
@@ -36,7 +51,6 @@ const About = () => {
                             </li>
                         </ul>
                     </li>
-                   
                     <li className="list-decimal-item">
                         <strong>Image Resizing and Customization:</strong>
                         <ul className="list-disc">
@@ -55,7 +69,6 @@ const About = () => {
                             </li>
                         </ul>
                     </li>
-                  
                     <li className="list-decimal-item">
                         <strong>Customization Options:</strong>
                         <ul className="list-disc">
@@ -71,35 +84,30 @@ const About = () => {
                             <li>Add borders to images for a polished look.</li>
                         </ul>
                     </li>
-
                     <li className="list-decimal-item">
                         <strong>Initial Image Size:</strong> 
                         <ul className="list-disc">
                             <li> Specify the initial maximum size of images relative to the paper when first uploaded. </li>
                         </ul>
                     </li>
-
                     <li className="list-decimal-item">
                         <strong>Efficient Packing:</strong> 
                         <ul className="list-disc">
                             <li> Click on "Start Packing" to let our efficient algorithm arrange the images on paper. View the optimized layout and make adjustments as needed. </li>
                         </ul>
                     </li>
-
                     <li className="list-decimal-item">
                         <strong>Download and Print:</strong> 
                         <ul className="list-disc">
                             <li> Once satisfied, download the layout as a PDF or print it directly. </li>
                         </ul>
                     </li>
-
                     <li className="list-decimal-item">
                         <strong>Update and Refine:</strong> 
                         <ul className="list-disc">
                             <li> Use the "Resize Images" button to make further adjustments. Click on "Start Packing" again to generate a new packing based on your updates.</li>
                         </ul>
                     </li>
-                    
                 </ol>
 
                 <p className="sub-paragraph">

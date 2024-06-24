@@ -12,6 +12,7 @@ import './Home.css'
 
 
 const Home = () => {
+    
     const dispatch = useAppDispatch();
     const { container, inResizeMode, imagesLoaded, showBorder } = useAppSelector((state) => state.main);
 
@@ -111,39 +112,60 @@ const Home = () => {
     return (
       <main className="main-container1">
          <div className = "container1">
-          <div className="header-container">
-                <h1 className="title"> Smart Image Printing Simplified: Introducing pack4print! </h1>
-                <p className="description">
+         <div className="flex flex-col justify-center text-center">
+                <h1 className="main-heading">
+                    Smart Image Printing Simplified
+                </h1>
+                <p>
                     Effortlessly optimize your image printing with pack4print!
-                    Upload, customize, and let our powerful algorithm intelligently pack your images onto paper, minimizing waste and maximizing efficiency. Create, download, and print with ease. Try it now for a seamless printing experience!
+                    Upload, customize, and let our powerful algorithm
+                    intelligently pack your images onto paper, minimizing waste
+                    and maximizing efficiency. Create, download, and print with
+                    ease. Try it now for a seamless printing experience!
                 </p>
             </div>
-            <FileDropArea images={images} setBoxes={setBoxes} setImages={setImages} />
+            <FileDropArea
+                images={images}
+                setBoxes={setBoxes}
+                setImages={setImages}
+            />
 
-
-            <div className="button-container">
+            <div className="flex flex-wrap gap-2 py-2 mt-5 w-fit ">
                 {inResizeMode && images.length > 0 && (
-                    <Button onClick={startPacking}>
+                    <Button onClick={() => startPacking()} className="">
                         Start packing
                     </Button>
                 )}
 
-                {boxes.length > 0 && container && (loadingPDF ? (
-                    <div className="button-loading">
-                        creating PDF....
-                    </div>
-                ) : (
-                    <Button onClick={handlePdfSave} className="bg-green-500 hover:bg-green-600">
-                        Save as PDF
-                    </Button>
-                ))}
+                {boxes.length > 0 &&
+                    container &&
+                    (loadingPDF ? (
+                        <div className="flex flex-row items-center justify-center gap-2 px-2 py-2 text-white bg-green-500 hover:bg-green-600">
+                            creating PDF
+                            <ClipLoader color="white" size={16} />
+                        </div>
+                    ) : (
+                        <Button
+                            onClick={handlePdfSave}
+                            className="bg-green-500 hover:bg-green-600"
+                        >
+                            Save as PDF
+                        </Button>
+                    ))}
 
                 {boxes.length > 0 && (
-                    <Button onClick={() => handlePrintMultipleStages(stageRefs.map((ref) => ref.current))} className="bg-purple-500 hover:bg-purple-600">
+                    <Button
+                        onClick={() =>
+                            handlePrintMultipleStages(
+                                stageRefs.map((ref) => ref.current)
+                            )
+                        }
+                        className="bg-purple-500 hover:bg-purple-600"
+                    >
                         Print
                     </Button>
                 )}
-                {!inResizeMode && boxes.length > 0 && (
+                {!inResizeMode && boxes?.length > 0 && (
                     <Button
                         onClick={() => {
                             dispatch(setIsResizingAgain(true));
@@ -157,24 +179,29 @@ const Home = () => {
                     </Button>
                 )}
 
-                {images.length > 0 && !loading && (
-                    <Button onClick={reset} className="bg-green-500 hover:bg-green-600">
+                {images?.length > 0 && !loading && (
+                    <Button
+                        onClick={reset}
+                        className="bg-green-500 hover:bg-green-600"
+                    >
                         Reset
                     </Button>
                 )}
             </div>
-
- 
             {loading && (
-                <div className="loading-container">
+                <div className="flex flex-col items-center justify-center py-10 text-green-900 gap-y-2">
                     <ClipLoader color="#134e4a" size={50} />
-                    <p className="loading-text">
+                    <p className="text-2xl font-semibold">
                         Packing your images
                     </p>
                 </div>
             )}
 
-            <div ref={containerWrapper} className="stage-container">
+            <div
+                ref={containerWrapper}
+                className="flex flex-wrap w-full items-center justify-center   max-w-[1050px] gap-y-10 gap-x-5 "
+                style={{ overscrollBehavior: "auto" }}
+            >
                 {inResizeMode && (
                     <ResizingWindow setImages={setImages} images={images} />
                 )}
@@ -225,7 +252,7 @@ const Home = () => {
                     </Stage>
                 ))}
             </div>
-            <div id="temp-container" className="temp-container"></div> 
+            <div id="temp-container" style={{ display: "none" }}></div>
          </div>
 
       </main>
