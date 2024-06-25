@@ -14,17 +14,18 @@ import LabelSelectInput from "../../components/LabelSelect";
 import { paperSizes } from "../../data/paperSizes";
 import ResizeAnchor from "./components/ResizeAnchor";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
-
+import CropModal from './Model';
+import {createImage} from './croputils';
 
 
 const ResizingWindow = ({ images, setImages }) => {
+
     const dispatch = useAppDispatch();
     const containerRef = useRef(null);
     const [showMarginControls, setShowMarginControls] = useState(false);
     const { container, startingMaxWidthFactor, showBorder } = useAppSelector(
         (state) => state.main
     );
-
 
     const {
         localImages,
@@ -39,6 +40,48 @@ const ResizingWindow = ({ images, setImages }) => {
         images,
         setImages,
     });
+
+    const [isCropping, setIsCropping] = useState(false);
+    const [cropModalOpen, setCropModalOpen] = useState(false);
+    const [cropImageId, setCropImageId] = useState(null);
+
+    const openCropModal = (imageId) => {
+        setCropImageId(imageId);
+        setCropModalOpen(true);
+    };
+
+    const closeCropModal = () => {
+        setCropModalOpen(false);
+        setCropImageId(null);
+    };
+
+    const handleCropAndSave = async (img) => {
+        
+        const {blob, fileUrl, width, height} = img;
+        const newImage = {
+            id: cropImageId,
+            w: width,
+            h: height,
+            x: 0,
+            y: 0,
+            file:blob,
+            src: fileUrl,
+        };
+
+        setLocalImages((prevImages) =>
+            prevImages.map((img) =>
+                img.id === cropImageId ? newImage : img
+            )
+        );
+        setImages((prevImages) =>
+            prevImages.map((img) =>
+                img.id === cropImageId ? newImage : img
+            )
+        );
+        imageUrls.set(cropImageId, fileUrl);
+        closeCropModal();
+    };
+
 
     const handleMarginChange = (e, side) => {
         const newMarginValue = parseInt(e.target.value, 10);
@@ -71,9 +114,7 @@ const ResizingWindow = ({ images, setImages }) => {
         <div className="flex flex-col items-center justify-center w-full pt-5 mx-auto border-t">
             <div className="mb-4">
                 <p className="text-sm text-center text-gray-600">
-                    Click on the image and use the resize handle to resize the
-                    images. Take reference from the A4 paper width below and
-                    decide what size you want each image to be.
+                    Click on the image and use the resize handle to resize the images and Crop button to crop the image.
                 </p>
             </div>
             <div className="flex flex-col items-center justify-center gap-5 mb-4 sm:flex-row">
@@ -223,13 +264,31 @@ const ResizingWindow = ({ images, setImages }) => {
                             onMouseDown={(e) => handleMouseDown(e, imgData)}
                             onTouchStart={(e) => handleMouseDown(e, imgData)}
                         >
+
+{selectedId === imgData.id && (
+<button onClick={() => openCropModal(imgData.id)} 
+className="absolute top-0 right-0 bg-white border border-blue-500 text-blue-700 w-[17px] h-[20px]">
+
+<i className="fas fa-crop-alt text-sm absolute top-[-1px] right-0"></i>
+
+</button>
+)}
                             {selectedId === imgData.id && <ResizeAnchor />}
                         </div>
                     );
                 })}
+
+                {cropModalOpen && cropImageId && (
+                                <CropModal
+                                    imageUrl={imageUrls.get(cropImageId)}
+                                    onClose={closeCropModal}
+                                    onSave={handleCropAndSave}
+                                />
+                            )}
             </div>
         </div>
     );
 };
 
 export default ResizingWindow;
+

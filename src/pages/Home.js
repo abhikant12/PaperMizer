@@ -117,7 +117,7 @@ const Home = () => {
                     Smart Image Printing Simplified
                 </h1>
                 <p>
-                    Effortlessly optimize your image printing with pack4print!
+                    Effortlessly optimize your image printing with PaperMizer!
                     Upload, customize, and let our powerful algorithm
                     intelligently pack your images onto paper, minimizing waste
                     and maximizing efficiency. Create, download, and print with

@@ -52,12 +52,27 @@ const About = () => {
                         </ul>
                     </li>
                     <li className="list-decimal-item">
-                        <strong>Image Resizing and Customization:</strong>
+                        <strong>Image Cropping:</strong>
                         <ul className="list-disc">
                             <li>
                                 Upon uploading, your images will be displayed in a
-                                resizing window with the width equal to the paper
-                                size.
+                                resizing window.
+                            </li>
+                            <li>
+                                Click on an image to activate Cropping handles at
+                                the Top-Right corner.
+                            </li>
+                            <li>
+                                Crop the image according to your preference.
+                            </li>
+                        </ul>
+                    </li>
+                    <li className="list-decimal-item">
+                        <strong>Image Resizing:</strong>
+                        <ul className="list-disc">
+                            <li>
+                                Upon uploading, your images will be displayed in a
+                                resizing window.
                             </li>
                             <li>
                                 Click on an image to activate resizing handles at
@@ -82,12 +97,6 @@ const About = () => {
                                 Define page margins to suit your printing needs.
                             </li>
                             <li>Add borders to images for a polished look.</li>
-                        </ul>
-                    </li>
-                    <li className="list-decimal-item">
-                        <strong>Initial Image Size:</strong> 
-                        <ul className="list-disc">
-                            <li> Specify the initial maximum size of images relative to the paper when first uploaded. </li>
                         </ul>
                     </li>
                     <li className="list-decimal-item">
