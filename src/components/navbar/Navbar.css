@@ -1,77 +1,54 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #0a0a5e;
-  color: #fff;
-}
-
-.navbar-brand a {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.navbar-links {
-  display: flex;
-  list-style: none;
-  gap: 1.5rem;  
-}
-
-.navbar-links li {
-  display: inline;
-}
-
-.navbar-links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.4rem;
-  font-weight: 400;
-  transition: color 0.3s;
-}
-
-.navbar-links a:hover {
-  color: #ff0080;
-}
-
-
-.navbar-icons {
-  display: flex;
-  gap: 1.3rem;
-}
-
-.navbar-icons a {
-  color: #fff;
-  font-size: 1.5rem;
-  transition: color 0.3s;
-}
-
-.navbar-icons a:hover {
-  color: #ff0080;
-}
-
+    background-color: #331752;
+  }
+  
+  .navbar-brand a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: -7px;
+  }
+  
 .fade-out {
-  animation: disappear 200ms forwards;
-}
-
-.fade-in {
-  animation: appear 200ms forwards;
-}
-
-@keyframes disappear {
-  to {
-      opacity: 0;
+    animation: disappear 200ms forwards;
   }
-}
+  .fade-in {
+    animation: appear 200ms forwards;
+  }
+  @keyframes disappear {
+    to {
+        opacity: 0;
+    }
+  }
+  @keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
 
-@keyframes appear {
-  from {
-      opacity: 0;
+  .navbar-icons {
+    display: flex;
+    gap: 1.3rem;
+    margin-top: 7px;
   }
-  to {
-      opacity: 1;
+  .navbar-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s;
   }
-}
+  .navbar-icons a:hover {
+    color: blue;
+  }
+
+  .navbar-links a {
+    font-size: 1.4rem;
+    font-weight: 400;
+    transition: color 0.3s;
+  }
+  
+  

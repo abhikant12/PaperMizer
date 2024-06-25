@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import CountryCode from "../data/countrycode.json";
 import './Contact.css'; // Import the CSS file
+import Footer from "../components/Footer";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -38,6 +39,7 @@ const Contact = () => {
     };
 
     return (
+        <>
         <div className="contact-page">
 
             <div className="contact-info">
@@ -97,6 +99,8 @@ const Contact = () => {
                 </form>
             </div>
         </div>
+        <Footer/>
+        </>
     );
 };
 

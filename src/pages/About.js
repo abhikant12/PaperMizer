@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './About.css';
+import Footer from "../components/Footer";
+
 
 const About = () => {
 
@@ -19,6 +21,7 @@ const About = () => {
 
 
     return (
+        <> 
         <div className="main-container">
             <div className="container">
                 <h1 className="main-heading">{text}</h1>
@@ -128,6 +131,8 @@ const About = () => {
                 </p>
             </div>
         </div>
+        <Footer/>
+        </>
     );
 };
 

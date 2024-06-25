@@ -13,9 +13,9 @@ const Footer = () => {
                     by Abhikant Singh
                 </p>
             </div>
-            <p className="footer-text">
+            <div className="footer-text">
                 Contact: abhiparnav12@gmail.com
-            </p>
+            </div>
         </footer>
     );
 };

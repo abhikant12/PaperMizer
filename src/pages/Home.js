@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { resetState, setContainer, setImagesLoaded, setInResizeMode, setIsPacking, setIsResizingAgain,} from "../redux/features/slices/mainSlice";
 import { ClimbingBoxLoader, ClipLoader } from "react-spinners";
 import './Home.css'
+import Footer from "../components/Footer";
 
 
 const Home = () => {
@@ -110,6 +111,8 @@ const Home = () => {
 
 
     return (
+        
+        <>
       <main className="main-container1">
          <div className = "container1">
          <div className="flex flex-col justify-center text-center">
@@ -254,8 +257,11 @@ const Home = () => {
             </div>
             <div id="temp-container" style={{ display: "none" }}></div>
          </div>
-
       </main>
+         <Footer/>
+         </>
+
+      
   );
 };
 
