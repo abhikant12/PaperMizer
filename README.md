@@ -1,15 +1,9 @@
 # PaperMizer [```live```](https://papermizer-abhikant.vercel.app/)
 
-
-## Contents
-* [About](#about)
-* [Installation](#installation)
-* [Development](#development)
-* [Deployment](#deployment)
-
-
 ## About
+```sh
 PaperMizer is your go-to solution for efficient image packing onto paper! We understand the importance of optimizing resources and minimizing waste, and that's exactly what PaperMizer aims to achieve. Our app utilizes a powerful [bin packing algorithm](https://www.csc.liv.ac.uk/~epa/surveyhtml.html#:~:text=In%20the%20two%2Ddimensional%20bin,the%20minimum%20number%20of%20bins.) to intelligently arrange your images on paper, ensuring the minimum number of pages required for printing.
+```
 
 ## Features
 
