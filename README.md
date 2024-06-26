@@ -1,10 +1,9 @@
 # PaperMizer [```live```](https://papermizer-abhikant.vercel.app/)
 
-**Welcome to PaperMizer!**
 
 ## About
-
 **PaperMizer** is your go-to solution for efficient image packing onto paper! We understand the importance of optimizing resources and minimizing waste, and that's exactly what PaperMizer aims to achieve. Our app utilizes a powerful [bin packing algorithm](https://www.csc.liv.ac.uk/~epa/surveyhtml.html#:~:text=In%20the%20two%2Ddimensional%20bin,the%20minimum%20number%20of%20bins.) to intelligently arrange your images on paper, ensuring the minimum number of pages required for printing.
+
 
 ## Features
 
@@ -48,7 +47,6 @@
 
 
 ## Installation and Setup
-
 This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
 
 1. Clone the repository to your local machine.
@@ -56,20 +54,19 @@ This starter pack includes a basic setup for using **Tailwind CSS with React**. 
     git clone https://github.com/abhikant12/PaperMizer.git
     ```
 
-1. Install the required packages.
+2. Install the required packages.
     ```sh
     npm install
     ```
 
-1. Start the development server.
+3. Start the development server.
     ```sh
     npm run dev
     ```
-1. Open the project in your browser at [http://localhost:3000](http://localhost:3000) to view your project.
+4. Open the project in your browser at [http://localhost:3000](http://localhost:3000) to view your project.
 
 
 ## Usage
-
 1. Upload your images using drag and drop, click to upload, or Ctrl + V.
 2. Resize and crop the images as needed.
 3. Customize the layout with padding, margins, and borders.
@@ -78,9 +75,7 @@ This starter pack includes a basic setup for using **Tailwind CSS with React**. 
 6. Make further adjustments if necessary and re-pack the images.
 
 ## Contributing
-
 Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or a pull request. 
-
 
 ## Contact
 - Email: abhiparnav12@gmail.com
