@@ -12,7 +12,6 @@ const useImageURLs = (images) => {
                 newImageUrls.set(image.id, url);
             }
         });
-        setImageUrls(newImageUrls);
 
         // Clean up object URLs when component unmounts or images change
         return () => {

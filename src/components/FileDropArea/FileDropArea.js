@@ -73,11 +73,6 @@ const FileDropArea = ({ images, setImages, setBoxes }) => {
                     Drop Files or Click to Upload
                 </div>
 
-                {images.length > 0 && (
-                    <div className="image-preview-wrapper">
-                        {images.length > 0 && (<div className="image-preview-wrapper">{imagePreviews}</div> )}
-                    </div>
-                )}
 
             </div>
 

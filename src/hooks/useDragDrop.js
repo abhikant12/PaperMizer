@@ -97,9 +97,6 @@ const useDragAndDrop = () => {
                 }
             }
         }
-        if (files.length) {
-            setFiles(files);
-        }
     };
 
     return {

@@ -135,29 +135,7 @@ const ResizingWindow = ({ images, setImages }) => {
                         );
                     }}
                 />
-                <LabelSelectInput
-                    label="Paper"
-                    options={Object.values(paperSizes).map(({ name }) => ({
-                        value: name,
-                        label: name,
-                    }))}
-                    value={container.paperSize.name}
-                    onChange={(e) => {
-                        const selectedPaperSizeName = e.target.value;
-                        const selectedPaperSize = paperSizes[selectedPaperSizeName];
-
-                        if (selectedPaperSize) {
-                            const newContainer = {
-                                ...container,
-                                paperSize: selectedPaperSize,
-                                w: selectedPaperSize.width * 2,
-                                h: selectedPaperSize.height * 2,
-                            };
-
-                            dispatch(setContainer(newContainer));
-                        }
-                    }}
-                />
+            
                 <div className="flex flex-row items-center gap-x-2">
                     <input
                         type="checkbox"
@@ -239,43 +217,6 @@ const ResizingWindow = ({ images, setImages }) => {
                         </p>
                     </div>
                 )}
-                {localImages.map((imgData) => {
-                    const imageUrl = imageUrls.get(imgData.id) || "";
-
-                    return (
-                        <div
-                            key={imgData.id}
-                            data-id={imgData.id}
-                            style={{
-                                position: "absolute",
-                                left: imgData.x * container.scaleFactor,
-                                top: imgData.y * container.scaleFactor,
-                                width: imgData.w * container.scaleFactor,
-                                height: imgData.h * container.scaleFactor,
-                                backgroundImage: `url(${imageUrl})`,
-                                backgroundSize: "cover",
-                                border:
-                                    selectedId === imgData.id
-                                        ? "2px solid blue"
-                                        : showBorder
-                                        ? "1px solid black"
-                                        : "none",
-                            }}
-                            onMouseDown={(e) => handleMouseDown(e, imgData)}
-                            onTouchStart={(e) => handleMouseDown(e, imgData)}
-                        >
-
-                            {selectedId === imgData.id && (
-                                <button onClick={() => openCropModal(imgData.id)}  className="absolute top-0 right-0 bg-white border border-blue-500 text-blue-700 w-[17px] h-[20px]">
-                                    <i className="fas fa-crop-alt text-sm absolute top-[-1px] right-0"></i>
-                                </button>
-                            )}
-                            {selectedId === imgData.id && <ResizeAnchor />}
-                       
-                        </div>
-                    );
-                })}
-
                 {cropModalOpen && cropImageId && (
                                 <CropModal
                                     imageUrl={imageUrls.get(cropImageId)}
