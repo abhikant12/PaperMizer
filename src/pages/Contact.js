@@ -28,12 +28,12 @@ const Contact = () => {
 
     const validateForm = () => {
         const { firstname, lastname, email, phoneNo, message } = formData;
-        if (!firstname || !lastname || !email || !phoneNo || !message) {
+        if(!firstname || !lastname || !email || !phoneNo || !message) {
             toast.error("All fields are required.");
             return false;
         }
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
+        if(!emailPattern.test(email)){
             toast.error("Please enter a valid email address.");
             return false;
         }

@@ -265,15 +265,13 @@ const ResizingWindow = ({ images, setImages }) => {
                             onTouchStart={(e) => handleMouseDown(e, imgData)}
                         >
 
-{selectedId === imgData.id && (
-<button onClick={() => openCropModal(imgData.id)} 
-className="absolute top-0 right-0 bg-white border border-blue-500 text-blue-700 w-[17px] h-[20px]">
-
-<i className="fas fa-crop-alt text-sm absolute top-[-1px] right-0"></i>
-
-</button>
-)}
+                            {selectedId === imgData.id && (
+                                <button onClick={() => openCropModal(imgData.id)}  className="absolute top-0 right-0 bg-white border border-blue-500 text-blue-700 w-[17px] h-[20px]">
+                                    <i className="fas fa-crop-alt text-sm absolute top-[-1px] right-0"></i>
+                                </button>
+                            )}
                             {selectedId === imgData.id && <ResizeAnchor />}
+                       
                         </div>
                     );
                 })}

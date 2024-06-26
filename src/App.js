@@ -8,8 +8,6 @@ import Contact from './pages/Contact';
 import Navbar from './components/navbar/Navbar';
 
 
-
-
 export default function App() {
   return (
     <div>

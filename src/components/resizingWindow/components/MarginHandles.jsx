@@ -12,9 +12,7 @@ const MarginHandles = ({ handleMarginDragStart }) => {
             {/* left margin handle */}
             <div
                 className="margin-handle margin-handle-left"
-                style={{
-                    left: container.margin.left * container.scaleFactor,
-                }}
+                style={{left: container.margin.left * container.scaleFactor, }}
                 onMouseDown={(e) => handleMarginDragStart(e, "left")}
                 onTouchStart={(e) => handleMarginDragStart(e, "left")}
             >
@@ -24,9 +22,7 @@ const MarginHandles = ({ handleMarginDragStart }) => {
             {/* right margin handle */}
             <div
                 className="margin-handle margin-handle-right"
-                style={{
-                    right: container.margin.right * container.scaleFactor,
-                }}
+                style={{ right: container.margin.right * container.scaleFactor, }}
                 onMouseDown={(e) => handleMarginDragStart(e, "right")}
                 onTouchStart={(e) => handleMarginDragStart(e, "right")}
             >
@@ -36,9 +32,7 @@ const MarginHandles = ({ handleMarginDragStart }) => {
             {/* top margin handle */}
             <div
                 className="margin-handle margin-handle-top"
-                style={{
-                    top: container.margin.top * container.scaleFactor,
-                }}
+                style={{ top: container.margin.top * container.scaleFactor, }}
                 onMouseDown={(e) => handleMarginDragStart(e, "top")}
                 onTouchStart={(e) => handleMarginDragStart(e, "top")}
             >
@@ -48,9 +42,7 @@ const MarginHandles = ({ handleMarginDragStart }) => {
             {/* bottom margin handle */}
             <div
                 className="margin-handle margin-handle-bottom"
-                style={{
-                    bottom: container.margin.bottom * container.scaleFactor,
-                }}
+                style={{ bottom: container.margin.bottom * container.scaleFactor, }}
                 onMouseDown={(e) => handleMarginDragStart(e, "bottom")}
                 onTouchStart={(e) => handleMarginDragStart(e, "bottom")}
             >
@@ -58,30 +50,11 @@ const MarginHandles = ({ handleMarginDragStart }) => {
             </div>
 
             {/* margin lines */}
-            <div
-                className="margin-line-top"
-                style={{
-                    height: container.margin.top * container.scaleFactor,
-                }}
-            ></div>
-            <div
-                className="margin-line-left"
-                style={{
-                    width: container.margin.left * container.scaleFactor,
-                }}
-            ></div>
-            <div
-                className="margin-line-right"
-                style={{
-                    width: container.margin.right * container.scaleFactor,
-                }}
-            ></div>
-            <div
-                className="margin-line-bottom"
-                style={{
-                    height: container.margin.bottom * container.scaleFactor,
-                }}
-            ></div>
+            <div className="margin-line-top" style={{ height: container.margin.top * container.scaleFactor, }} ></div>
+            <div className="margin-line-left" style={{ width: container.margin.left * container.scaleFactor, }} ></div>
+            <div className="margin-line-right" style={{ width: container.margin.right * container.scaleFactor, }} ></div>
+            <div className="margin-line-bottom" style={{ height: container.margin.bottom * container.scaleFactor, }} ></div>
+      
         </>
     );
 };
