@@ -63,14 +63,6 @@ export const saveAsPDF = async ({
                     }
                 });
 
-                pdf.addImage(
-                    stage.toDataURL({ pixelRatio: 0.9 }),
-                    0,
-                    0,
-                    container.w * scaleX,
-                    container.h * scaleY
-                );
-
                 stage.destroy();
             });
 
@@ -149,10 +141,6 @@ export const createImages = async (files) => {
                 img.onload = () => {
                     resolve({
                         id,
-                        w: img.width,
-                        h: img.height,
-                        x: 0,
-                        y: 0,
                         file,
                         new: true,
                     });
